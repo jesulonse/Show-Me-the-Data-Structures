@@ -1,0 +1,3 @@
+This is used to find files within the operating system (os). This involves the use of the "import os" to enable us to be able to traverse a folder down to the file we are looking for.
+A recursive data structure is used because the nature of finding files requires travesing the folders down to the required file.
+The time complexity is Linear O(n) because of the Single for loop in the "find_files(suffix, path)" function. This means the algorithm increases or decreases with the number of inputs.
