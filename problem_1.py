@@ -136,11 +136,6 @@ class LRU_Cache(object):
                 self.num_entries += 1
            
        
-       
-       
-           
-   
-   
 
 our_cache = LRU_Cache(5)
 
@@ -149,15 +144,33 @@ our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
 
+#Edge cases
+#checking for values present in the cache
+our_cache.get(1)       
+our_cache.get(2)       
+print(our_cache.get(1)) # returns 1
+print(our_cache.get(2)) # returns 2
 
-our_cache.get(1)       # returns 1
-our_cache.get(2)       # returns 2
-our_cache.get(11)      # returns -1 because 9 is not present in the cache
-print(our_cache.get(1))
-print(our_cache.get(2))
-print(our_cache.get(11))
+#checking for values not present in the cache
+our_cache.get(11)      
+print(our_cache.get(11)) # returns -1 because 11 is not present in the cache
+
+#adding new values to the cache to make it exceed capacity of the cache
 our_cache.set(5, 5)
 our_cache.set(6, 6)
 
+#checking for the least used cache
 our_cache.get(3)      # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
 print(our_cache.get(3))
+
+#checking for repeated values to see that the program works for a continuously used value or item of the cache
+our_cache.get(1)
+our_cache.get(2)
+print(our_cache.get(1)) #returns 1
+print(our_cache.get(2)) #returns 2 Meaning that once the item is continously used in the cache, it will remain in cache
+
+#Negative, null values
+our_cache.get(-20)
+print(our_cache.get(-20)) #returns -1 whether it is Null or negative value provided it is not in the cache when the cache is of full capacity
+our_cache.get("")
+print(our_cache.get(""))

@@ -1,24 +1,27 @@
 import os
 def find_files(suffix, path):
+
+    if suffix == "":
+
+        return []
+
     new_directory = []
-    if suffix == '':# or not '.c':
-        return []
-    if len(os.listdir(path)) == 0:
-        return []
-    if os.path.isfile(path):
-        if path.endswith(suffix):
-            return path
+
+    if os.path.isdir(path):
+
+        for sub_dir in os.listdir(path):
+
+            new_path = find_files(suffix, path + "/" + sub_dir)
+
+            new_directory = new_directory + new_path
+
     else:
-        new_path = os.listdir(path)
-        for every_item in new_path:
-            new_directory.extend(find_files(suffix, "{0}\{1}".format(path,every_item)))
-            return new_directory
 
+        if path.endswith(suffix):
+            
+                return [path]
 
+    return new_directory
 
 pathy = os.getcwd()
-print(pathy)
-folder_name = 'testdir'
 print(find_files(".c", pathy))
-            
-

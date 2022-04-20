@@ -2,7 +2,6 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-
     def __repr__(self):
         return str(self.value)
 
@@ -10,7 +9,6 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-
     def __str__(self):
         cur_head = self.head
         out_string = ""
@@ -25,11 +23,9 @@ class LinkedList:
         if self.head is None:
             self.head = Node(value)
             return
-
         node = self.head
         while node.next:
             node = node.next
-
         node.next = Node(value)
 
     def size(self):
@@ -58,11 +54,11 @@ def union(llist_1, llist_2):
         dict[node.value] = True
         node = node.next
        
-    #populating the empty list with the key of the dictionary as the eelements
-    #the union of the two linkedlists
-    #the key is populated into the union list instead of the value because the key is not duplicated
-    #while the value can be duplicated and the key is the true value of the linkedlist
-    #while the value is the frequency of the dictionary
+    # populating the empty list with the key of the dictionary as the eelements
+    # the union of the two linkedlists
+    # the key is populated into the union list instead of the value because the key is not duplicated
+    # while the value can be duplicated and the key is the true value of the linkedlist
+    # while the value is the frequency of the dictionary
     union_llist = []
     for key in dict:
         union_llist.append(key)
@@ -88,11 +84,11 @@ def intersection(llist_1, llist_2):
         dict2[node.value] = True
         node = node.next
        
-    #populating the empty list with the key of the dictionary as the eelements
-    #the union of the two linkedlists
-    #the key is populated into the union list instead of the value because the key is not duplicated
-    #while the value can be duplicated and the key is the true value of the linkedlist
-    #while the value is the frequency of the dictionary
+    # populating the empty list with the key of the dictionary as the elements
+    # the intersect of the two linkedlists
+    # the key is populated into the intersect list instead of the value because the key is not duplicated
+    # while the value can be duplicated and the key is the true value of the linkedlist
+    # while the value is the frequency of the dictionary
     intersect_llist = []
     for key in dict1:
         if key in dict2:
@@ -102,7 +98,7 @@ def intersection(llist_1, llist_2):
 
 
 # Test case 1
-
+print('Test case 1 where we have unique elements in both linkedlist')
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -117,7 +113,7 @@ for i in element_2:
 
 print (union(linked_list_1,linked_list_2))
 print (intersection(linked_list_1,linked_list_2))
-
+print("Test case 2 where one of the linkedlist does not have any match with the other linkedlist")
 # Test case 2
 
 linked_list_3 = LinkedList()
@@ -135,3 +131,59 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4))
 print (intersection(linked_list_3,linked_list_4))
+
+print("Test case 3 for one-element linkedlist for both lists")
+# Test case 3 for one set element
+
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_1 = [3]
+element_2 = [1]
+
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+
+print (union(linked_list_5,linked_list_6))
+print (intersection(linked_list_5,linked_list_6))
+
+print("Test case 4 for one empty element linkedlist and the other linkedlist with values")
+# Test case 4 for one empty element set and the other full set
+
+linked_list_7 = LinkedList()
+linked_list_8 = LinkedList()
+
+element_1 = []
+element_2 = [1,5,8,6,9,3,6]
+
+
+for i in element_1:
+    linked_list_7.append(i)
+
+for i in element_2:
+    linked_list_8.append(i)
+
+print (union(linked_list_7,linked_list_8))
+print (intersection(linked_list_7,linked_list_8))
+
+print("Test case 5 for both empty list ")
+# Test case 5 for both empty list
+
+linked_list_9 = LinkedList()
+linked_list_10 = LinkedList()
+
+element_1 = []
+element_2 = []
+
+for i in element_1:
+    linked_list_9.append(i)
+
+for i in element_2:
+    linked_list_10.append(i)
+
+print (union(linked_list_9,linked_list_10))
+print (intersection(linked_list_9,linked_list_10))

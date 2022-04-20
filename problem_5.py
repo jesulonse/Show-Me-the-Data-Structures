@@ -25,20 +25,15 @@ class BlockChain_LinkedList(object):
         self.head = None
 
     def append(self, data):
-
         if data is None or data == "":
             return
-
         if self.head is None:
             self.head = Block(datetime.datetime.utcnow(), data, 0)#datetime.datetime.utcnow() is used because the time is Greenwich Mean Time
             return       
-
         # Move to the tail (the last node)
         node = self.head
         while node.next:
-
             node = node.next
-
         node.next = Block(datetime.datetime.utcnow(), data, self.head.hash)
         return
     
@@ -46,17 +41,17 @@ class BlockChain_LinkedList(object):
     #creating the list of block chain
     def to_list(self):
         out_list = []
-
         block = self.head
         while block:
             out_list.append([block])
             block = block.next
-
         return out_list
 
 
 #Edge cases:
-#block chain with data
+#Case I: block chain with data
+#The blocks are with the same timestamp being observed from output
+print('Case I: block chain with data')
 BlockChain_1 = BlockChain_LinkedList()
 data_1 = "We are happy now"
 data_2 = "We are a glorious people now"
@@ -70,7 +65,8 @@ BlockChain_1.append(data_4)
 
 print(BlockChain_1.to_list())
 
-#Block chain with data as ""
+#Block chain with data as "" or empty block
+print('Case II: Block chain with data as "" or empty block')
 BlockChain_2 = BlockChain_LinkedList()
 
 BlockChain_2.append("")
@@ -81,6 +77,7 @@ BlockChain_2.append("")
 print(BlockChain_2.to_list())
 
 #Block chain with data as None
+print('Case III: Block chain with data as None')
 BlockChain_3 = BlockChain_LinkedList()
 
 
@@ -91,6 +88,7 @@ BlockChain_3.append(None)
 print(BlockChain_3.to_list())
 
 #block chain with one of the blocks without data
+print('Case IV: block chain with one of the blocks without data')
 BlockChain_4 = BlockChain_LinkedList()
 data_1 = "First data block"
 data_2 = ""

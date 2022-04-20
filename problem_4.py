@@ -67,8 +67,11 @@ parent.add_group(child)
 #for a known sub_child(sub_child_user) of a parent
 print(is_user_in_group("sub_child_user", parent))
 
-#for an unknown child(friend_of_user) of a parent
+#for an unknown child(friend_of_user) of a parent or does not have a parent or is not found in the group
 print(is_user_in_group("friend_of_user", parent))
+
+#for an empty child
+print(is_user_in_group("", parent))
 
 #for an parent("parent_user") of a parent group
 print(is_user_in_group("parent_user", parent))
